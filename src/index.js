@@ -7,16 +7,47 @@ const FileList = ({files}) => (
   <table className='filelist'>
     <tbody>
       {files.map(file => (
-        <tr className='filelist-item' key={file.id}>
-           <td className='file-name'>{file.name}</td>
-        </tr>
+        <FileListItem  key={file.id} file={file}/>
       ))}
     </tbody>
   </table>
 );
 
-FileList.prototype = {
-  files:PropTypes.Array
+FileList.propTypes = {
+  files:PropTypes.array
+};
+
+const FileListItem = ({file}) => (
+  <tr className='filelist-item'>
+    {getFileName(file)}
+</tr>
+);
+
+FileListItem.propTypes = {
+  file: PropTypes.object.isRequired
+}
+
+function FileIcon({file}) {
+  let icon = 'fa-file-text-o';
+  if(file.type === 'folder'){
+    icon = 'fa-folder';
+  }
+  return (
+    <td className='file-icon'>
+       <i className={`fa ${icon}`}></i>
+    </td>
+  )
+}
+
+FileIcon.propTypes = {
+  file: PropTypes.object.isRequired
+};
+
+function getFileName(file) {
+  return [
+    <FileIcon file={file} key={0}/>,
+    <td className='file-name' key={1}>{file.name}</td>
+  ];
 }
 
 const testFiles = [
