@@ -24,3 +24,15 @@
 .fa-folder, .fa-icon {
   color: #508FCA;
 }
+
+.commitmessage {
+  max-width: 442px;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+.age {
+  width: 125px;
+  text-align: right;
+  padding-right: 4px;
+}
