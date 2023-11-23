@@ -23,7 +23,7 @@ const FileListItem = ({file}) => (
     {getFileName(file)}
     <CommitMessage commit={file.latestCommit}/>
     <td className='age'>
-      <Time time={file.updated_at}/>
+    <Time time={file.updated_at}/>
     </td>
 </tr>
 );
