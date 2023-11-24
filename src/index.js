@@ -43,7 +43,6 @@ function FileIcon({file}) {
     </td>
   )
 }
-
 FileIcon.propTypes = {
   file: PropTypes.object.isRequired
 };
@@ -54,7 +53,6 @@ function getFileName(file) {
     <td className='file-name' key={1}>{file.name}</td>
   ];
 }
-
 const CommitMessage = ({commit}) => (
   <td className='commitmessage'>
     {commit.message}
