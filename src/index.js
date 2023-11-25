@@ -43,6 +43,7 @@ function FileIcon({file}) {
     </td>
   )
 }
+
 FileIcon.propTypes = {
   file: PropTypes.object.isRequired
 };
