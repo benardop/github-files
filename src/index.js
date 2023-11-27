@@ -103,21 +103,25 @@ class Parent extends React.Component {
   }
 
   handleAction = (action) => {
-    console.log('child says', action);
+    console.log("Child says", action);
+
     this.setState({
-     actionCount: this.state.actionCount + 1
+      actionCount: this.state.actionCount + 1
     });
-  };
+  }
 
   render() {
     return (
       <div>
         <Child onAction={this.handleAction}/>
-        <p>Clicked {this.state.actionCount} times</p>
+        <p>Clicked {this.state.actionCount} Times!</p>
       </div>
     )
   }
+
 }
+
+
 
 function Child({onAction}){
   return (
