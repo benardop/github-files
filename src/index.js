@@ -99,37 +99,32 @@ const testFiles = [
 
 class Parent extends React.Component {
   state = {
-    actionCount: 0
+    count: 0
   }
 
-  handleAction = (action) => {
-    console.log("Child says", action);
-
+  increaseCount = () => {
     this.setState({
-      actionCount: this.state.actionCount + 1
+      count: this.state.count + 1
     });
+  }
+  decreaseCount = () => {
+    this.setState({
+      count: this.state.count-1
+    })
   }
 
   render() {
     return (
       <div>
-        <Child onAction={this.handleAction}/>
-        <p>Clicked {this.state.actionCount} Times!</p>
+        <p>Count:  {this.state.count} Times!</p>
+        <button onClick={this.increaseCount}>Increase</button>
+        <button onClick={this.decreaseCount}>Decrease</button>
       </div>
     )
   }
 
 }
 
-
-
-function Child({onAction}){
-  return (
-    <button onClick={onAction}>
-        Click me!
-    </button>
-  )
-}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
