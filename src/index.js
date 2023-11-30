@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom/client';
 import PropTypes from 'prop-types';
 import Time from './time';
@@ -97,9 +97,10 @@ const testFiles = [
 
 ];
 
-class Parent extends React.Component {
+class Parent extends Component {
   state = {
-    count: 0
+    count: 0,
+    text: ''
   }
 
   increaseCount = () => {
@@ -113,12 +114,21 @@ class Parent extends React.Component {
     })
   }
 
+  handleChange = (event) => {
+    let text = event.target.value;
+    text = text.replace(/[1-9/]/g, '');
+    this.setState({text})
+  }
+
   render() {
     return (
       <div>
         <p>Count:  {this.state.count} Times!</p>
         <button onClick={this.increaseCount}>Increase</button>
         <button onClick={this.decreaseCount}>Decrease</button>
+        <input type='text'
+          value={this.state.text}
+          onChange={this.handleChange} />
       </div>
     )
   }
