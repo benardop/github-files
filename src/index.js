@@ -1,11 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import './index.css';
 
 const FileList = ({files}) => (
-  <table className='filelist'>
+  <table className='file-list'>
     <tbody>
       {files.map(file => (
           <FileListItem key={file.id} file={file}/>
@@ -25,6 +24,20 @@ const FileListItem = ({file}) => (
 )
 
 FileListItem.propTypes = {
+  file: PropTypes.object.isRequired
+}
+
+function FileIcon({file}) {
+  let icon = 'fa-file-text-o';
+
+  if(file.type === 'folder') {
+    icon = 'fa folder';
+  }
+    <td className='file-icon'>
+      <i className= {`fa ${icon}`} />
+    </td>  
+}
+FileIcon.prototype = {
   file: PropTypes.object.isRequired
 }
 
