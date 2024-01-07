@@ -19,7 +19,8 @@ FileList.propTypes = {
 
 const FileListItem = ({file}) => (
   <tr className='file-list-item'>
-    <td className='file-name'>{file.name}</td>
+    <FileName file={file} />
+    <CommitMassage commit={file.latestCommit} />
   </tr>
 )
 
@@ -31,14 +32,39 @@ function FileIcon({file}) {
   let icon = 'fa-file-text-o';
 
   if(file.type === 'folder') {
-    icon = 'fa folder';
+    icon = 'fa-folder';
   }
-    <td className='file-icon'>
+    return (
+      <td className='file-icon'>
       <i className= {`fa ${icon}`} />
-    </td>  
+    </td>
+    );  
 }
-FileIcon.prototype = {
+FileIcon.propTypes = {
   file: PropTypes.object.isRequired
+}
+
+function FileName({file}) {
+  return (
+    <>
+     <FileIcon file={file} />
+     <td className='file-name'>{file.name}</td>
+    </>
+  )
+}
+FileName.propTypes = {
+  file: PropTypes.object.isRequired
+}
+
+const CommitMassage = ({commit}) => {
+  return (
+    <td className='commit-message'>
+      {commit.message}
+    </td>
+  )
+}
+CommitMassage.propTypes = {
+  commit: PropTypes.object.isRequired
 }
 
 const testFiles = [
